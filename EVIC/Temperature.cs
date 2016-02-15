@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace EVIC
 {
-    class Temperature
+    public class Temperature
     {
+        int inside;
+        int outside;
+
+    public Temperature(int a, int b)
+    {
+            inside = a;
+            b = outside;
     }
+        
+    public string TempOutside()
+        {
+            return outside.ToString();
+        }
+    public string TempInside()
+        {
+            return inside.ToString();
+        }
+}
 }

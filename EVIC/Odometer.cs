@@ -8,5 +8,9 @@ namespace EVIC
 {
     class Odometer
     {
+        int _tripA;
+        int _tripB;
+
+        public int 
     }
 }

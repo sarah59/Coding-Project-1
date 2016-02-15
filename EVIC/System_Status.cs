@@ -8,5 +8,9 @@ namespace EVIC
 {
     class System_Status
     {
+        int milesTilOil = 3000;
+        int mileage = 33546;
+        
+        
     }
 }
