@@ -10,22 +10,24 @@ using System.Threading.Tasks;
 namespace EVIC
 {
     /// <summary>
-    /// 
+    /// Keeps track of how many miles have been driven.
     /// </summary>
-    class Odometer
+    public class Odometer
     {
-
-        int ode;
+        public int ode;
         int _tripA;
         int _tripB;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Odometer()
         {
             this.ode = 0;
         }
 
         /// <summary>
-        /// 
+        /// Adds 1 to the mileage.
         /// </summary>
         public void increment()
         {
@@ -35,9 +37,9 @@ namespace EVIC
         }
 
         /// <summary>
-        /// 
+        /// How far the car has gone.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>how many miles have been driven</returns>
         public int currentMileage()
         {
             return ode;
@@ -45,16 +47,16 @@ namespace EVIC
     }
 
     /// <summary>
-    /// 
+    /// Keeps track of trip A and trip B.
     /// </summary>
-    class TripInfo
+    public class TripInfo
     {
-        int _tripA;
-        int _tripB;
+        public int _tripA;
+        public int _tripB;
         Odometer _odometer;
 
         /// <summary>
-        /// 
+        /// Constructor.
         /// </summary>
         /// <param name="_odometer"></param>
         public TripInfo(Odometer _odometer)
@@ -65,9 +67,9 @@ namespace EVIC
         }
 
         /// <summary>
-        /// 
+        /// Trip A total mileage.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>trip A value</returns>
         public int getTripAValue()
         {
             return _odometer.currentMileage() - _tripA;
@@ -75,16 +77,16 @@ namespace EVIC
         }
 
         /// <summary>
-        /// 
+        /// Trip B total mileage.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>trip B value</returns>
         public int getTripBValue()
         {
             return _odometer.currentMileage() - _tripB;
         }
 
         /// <summary>
-        /// 
+        /// Sets trip A to 0.
         /// </summary>
         public void resetA()
         {
@@ -92,7 +94,7 @@ namespace EVIC
         }
 
         /// <summary>
-        /// 
+        /// Sets trip B to 0.
         /// </summary>
         public void resetB()
         {
@@ -101,17 +103,17 @@ namespace EVIC
     }
 
     /// <summary>
-    /// 
+    /// Keeps track of the oil status.
     /// </summary>
-    class System_Status
+    public class System_Status
     {
         int lastOilChange;
         Odometer _odometer;
 
         /// <summary>
-        /// 
+        /// Constructor.
         /// </summary>
-        /// <param name="_odometer"></param>
+        /// <param name="_odometer">current odometer to determine current mileage</param>
         public System_Status(Odometer _odometer)
         {
             this._odometer = _odometer;
@@ -119,9 +121,9 @@ namespace EVIC
         }
 
         /// <summary>
-        /// 
+        /// Miles until next oil change.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>miles until next change</returns>
         public int Oil()
         {
             int change = 3000 - (_odometer.currentMileage() - lastOilChange);
@@ -129,9 +131,9 @@ namespace EVIC
         }
 
         /// <summary>
-        /// 
+        /// The last oil change.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>how many miles ago the last oil change occured</returns>
         public int ResetOil()
         {
             lastOilChange = _odometer.currentMileage();
@@ -140,18 +142,18 @@ namespace EVIC
     }
 
     /// <summary>
-    /// 
+    /// Inside and outside temperature.
     /// </summary>
-    class Temperature
+    public class Temperature
     {
         int inside;
         int outside;
 
         /// <summary>
-        /// 
+        /// Constructor.
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
+        /// <param name="a">inside temperature</param>
+        /// <param name="b">outside temperature</param>
         public Temperature(int a, int b)
         {
             inside = a;
@@ -159,18 +161,18 @@ namespace EVIC
         }
 
         /// <summary>
-        /// 
+        /// Outside temperature.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the temperature outside</returns>
         public int TempOutside()
         {
             return outside;
         }
 
         /// <summary>
-        /// 
+        /// Inside temperature.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>the temperature inside</returns>
         public int TempInside()
         {
             return inside;
@@ -178,18 +180,22 @@ namespace EVIC
     }
 
     /// <summary>
-    /// 
+    /// US vs Metric settings
     /// </summary>
-    class Settings
+    public class Settings
     {
         public bool usingMetric;
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public Settings()
         {
             usingMetric = false;
         }
 
         /// <summary>
-        /// 
+        /// Toggles the setting between US and Metric
         /// </summary>
         public void Change()
         {
@@ -198,14 +204,17 @@ namespace EVIC
     }
 
     /// <summary>
-    /// 
+    /// Warning messages.
     /// </summary>
-    class Warnings
+    public class Warnings
     {
-        bool engine;
-        bool ajar;
-        bool changeOil;
+        public bool engine;
+        public bool ajar;
+        public bool changeOil;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public Warnings()
         {
             this.engine = true;
@@ -213,16 +222,28 @@ namespace EVIC
             this.changeOil = true;
         }
 
+        /// <summary>
+        /// Check engine.
+        /// </summary>
+        /// <returns>if the check engine light is on</returns>
         public bool Engine()
         {
             return engine;
         }
 
+        /// <summary>
+        /// Door ajar.
+        /// </summary>
+        /// <returns>if the door is ajar</returns>
         public bool Ajar()
         {
             return ajar;
         }
 
+        /// <summary>
+        /// Time for an oil change.
+        /// </summary>
+        /// <returns>if the car need an oil change</returns>
         public bool ChangeOil()
         {
             return changeOil;
