@@ -55,9 +55,9 @@
     <Compile Include="TestClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EVIC\EVIC.csproj">
-      <Project>{B9A0AFB3-BE23-4730-854D-F223ACEBA694}</Project>
-      <Name>EVIC</Name>
+    <ProjectReference Include="..\Class Library\Class Library.csproj">
+      <Project>{ef300e38-dc53-4faa-9b3b-19b791234cf8}</Project>
+      <Name>Class Library</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
